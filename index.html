@@ -49,6 +49,11 @@
     <small><p class="mx-2">Bei Anmerkungen kontaktieren Sie uns gerne über E-Mail: <a href="mailto:kontakt@muellfrei-dieburg.de">kontakt@muellfrei-dieburg.de</a></p></small>
     <hr>
     <a class="m-2" href="impressum">Impressum</a>
-    <small><p class="m-2">Copyright © 2021 Müllfrei Dieburg</p></small>
+    <small><p class="m-2">Copyright © <span id="fullYear">2021</span> Müllfrei Dieburg</p></small>
+    <script>
+        var d = new Date();
+        var n = d.getFullYear();
+        document.getElementById("fullYear").innerHTML = n;
+    </script>
 </body>
 </html>
