@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muellfrei Dieburg</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+        }
+        @media (prefers-color-scheme: dark) {
+            body {
+                color: #eee;
+                background: #121212;
+            }
+
+            body a  {
+                color: #809fff;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="text-center m-2 user-select-none">Müllfrei Dieburg</h1>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <ul>
+                    <li class="my-5"><a href="beschreibung">Beschreibung</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <ul>
+                    <li class="my-5">
+                        <a href="vereinssatzung">Vereinssatzung</a>
+                        <small><p>Vom 24.05.2021</p></small>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <small><p class="mx-2">Bei Anmerkungen kontaktieren Sie uns gerne über E-Mail: <a href="mailto:kontakt@muellfrei-dieburg.de">kontakt@muellfrei-dieburg.de</a></p></small>
+    <hr>
+    <a class="m-2" href="impressum">Impressum</a>
+    <small><p class="m-2">Copyright © <span id="fullYear">2021</span> Müllfrei Dieburg</p></small>
+    <script>
+        var d = new Date();
+        var n = d.getFullYear();
+        document.getElementById("fullYear").innerHTML = n;
+    </script>
+</body>
+</html>
