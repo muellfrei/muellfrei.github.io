@@ -207,9 +207,9 @@ body, html {
           </div>
         </div>
         <input class="w3-input w3-border" type="text" id="m-message" placeholder="Message" required name="Message">
-        <button class="w3-button w3-black w3-right w3-section" onclick="sendMail()">
+        <a class="w3-button w3-black w3-right w3-section" onclick="sendMail()">
           <i class="fa fa-paper-plane"></i> SEND MESSAGE
-        </button>
+        </a>
       </form>
     </div>
   </div>
@@ -274,7 +274,7 @@ function toggleFunction() {
     To : 'kontakt@muellfrei-dieburg.de',
     From : "noreply@muellfrei-dieburg.de",
     Subject : "[website] " + name + " hat auf der Webseite eine Nachricht hinterlassen",
-    Body : "Name: " + name + "; Email: " + email + "; Email: " + message + "; (This email is auto-generated. Please do not answer to it.)"
+    Body : "Name: " + name + "; Email: " + email + "; Nachricht: " + message + "; (This email is auto-generated. Please do not answer to it.)"
   }).then(
   message => alert("Ihre Nachricht sollte jetzt unterwegs sein.")
 );
