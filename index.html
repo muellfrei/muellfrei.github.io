@@ -271,12 +271,12 @@ function toggleFunction() {
     
   Email.send({
     SecureToken : "0e2aa0ec-6a26-4216-bf68-9ef23b9c9976",
-    To : 'kontakt@muellfrei-dieburg.com',
+    To : 'kontakt@muellfrei-dieburg.de',
     From : "noreply@muellfrei-dieburg.de",
     Subject : "[website] " + name + " hat auf der Webseite eine Nachricht hinterlassen",
     Body : "Name: " + name + "; Email: " + email + "; Email: " + message + "; (This email is auto-generated. Please do not answer to it.)"
   }).then(
-  message => alert(message)
+  message => alert("Ihre Nachricht sollte jetzt unterwegs sein.")
 );
   }
 </script>
