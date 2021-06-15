@@ -202,14 +202,14 @@ body, html {
       <form action="/action_page.php" target="_blank">
         <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
           <div class="w3-half">
-            <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+            <input class="w3-input w3-border" type="text" id="m-name" placeholder="Name" required name="Name">
           </div>
           <div class="w3-half">
-            <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+            <input class="w3-input w3-border" type="text" id="m-email" placeholder="Email" required name="Email">
           </div>
         </div>
-        <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
-        <button class="w3-button w3-black w3-right w3-section" type="submit">
+        <input class="w3-input w3-border" type="text" id="m-message" placeholder="Message" required name="Message">
+        <button class="w3-button w3-black w3-right w3-section" onclick="sendMail()" type="submit">
           <i class="fa fa-paper-plane"></i> SEND MESSAGE
         </button>
       </form>
@@ -265,19 +265,22 @@ function toggleFunction() {
 
 <script>
   function sendMail() {
-    Email.send({
-    Host : "smtp.yandex.com",
-    Username : "noreply@muellfrei-dieburg.de",
-    Password : "eynogcvkibsjeeuc",
-    To : 'jona.kaufmann@outlook.com',
-    From : "noreply@muellfrei-dieburg.de",
-    Subject : "This is the subject",
-    Body : "And this is the body"
-  }).then(
-    message => alert(message)
-  );
-  }
+  
+    var name = document.getElementById('m-name').value;
+    var email = document.getElementById('m-email').value;
+    var message = document.getElementById('m-message').value;
 
+    
+  Email.send({
+    SecureToken : "0e2aa0ec-6a26-4216-bf68-9ef23b9c9976",
+    To : 'kontakt@muellfrei-dieburg.com',
+    From : "noreply@muellfrei-dieburg.de",
+    Subject : "[website] " + name + " hat auf der Webseite eine Nachricht hinterlassen",
+    Body : "Name: " + name + "; Email: " + email + "; Email: " + message + "; (This email is auto-generated. Please do not answer to it.)"
+  }).then(
+  message => alert(message)
+);
+  }
 </script>
 
 </body>
