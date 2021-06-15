@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://smtpjs.com/v3/smtp.js"></script>
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
 body, html {
@@ -258,6 +259,23 @@ function toggleFunction() {
         x.className = x.className.replace(" w3-show", "");
     }
 }
+</script>
+
+<script>
+  function sendMail() {
+    Email.send({
+    Host : "smtp.yandex.com",
+    Username : "noreply@muellfrei-dieburg.de",
+    Password : "eynogcvkibsjeeuc",
+    To : 'jona.kaufmann@outlook.com',
+    From : "noreply@muellfrei-dieburg.de",
+    Subject : "This is the subject",
+    Body : "And this is the body"
+  }).then(
+    message => alert(message)
+  );
+  }
+
 </script>
 
 </body>
