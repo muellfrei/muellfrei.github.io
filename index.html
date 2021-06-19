@@ -1,284 +1,428 @@
 <!DOCTYPE html>
 <html>
-<title>Müllfrei Dieburg</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://smtpjs.com/v3/smtp.js"></script>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&display=swap');
-body,h1,h2,h3,h4,h5,h6 {font-family: 'Heebo', sans-serif;}
-body, html {
-  height: 100%;
-  color: #000;
-  line-height: 1.8;
-}
+  <title>Müllfrei Dieburg</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  <style>
+    /* GLOBAL STYLES
+  -------------------------------------------------- */
+    /* Padding below the footer and lighter body text */
 
-/* Create a Parallax Effect */
-.bgimg-1, .bgimg-2, .bgimg-3 {
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+    body {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+      color: #5a5a5a;
+    }
 
-/* First image (Logo. Full height) */
-.bgimg-1 {
-  background-image: url("pictures/picture_1.jpg");
-  min-height: 100%;
-}
+    /* CUSTOMIZE THE CAROUSEL
+  -------------------------------------------------- */
 
-/* Second image (Portfolio) */
-.bgimg-2 {
-  background-image: url("pictures/picture_2.jpg");
-  min-height: 400px;
-}
+    /* Carousel base class */
+    .carousel {
+      margin-bottom: 4rem;
+    }
+    /* Since positioning the image, we need to help out the caption */
+    .carousel-caption {
+      bottom: 3rem;
+      z-index: 10;
+    }
 
-/* Third image (Contact) */
-.bgimg-3 {
-  background-image: url("pictures/picture_3.jpg");
-  min-height: 400px;
-}
+    /* Declare heights because of positioning of img element */
+    .carousel-item {
+      height: 32rem;
+    }
+    .carousel-item > img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      height: 32rem;
+    }
 
-.w3-wide {letter-spacing: 10px;}
-.w3-hover-opacity {cursor: pointer;}
+    /* MARKETING CONTENT
+  -------------------------------------------------- */
 
-/* Turn off parallax scrolling for tablets and phones */
-@media only screen and (max-device-width: 1600px) {
-  .bgimg-1, .bgimg-2, .bgimg-3 {
-    background-attachment: scroll;
-    min-height: 400px;
-  }
-}
-</style>
-<body>
+    /* Center align the text within the three columns below the carousel */
+    .marketing .col-lg-4 {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .marketing h2 {
+      font-weight: 400;
+    }
+    /* rtl:begin:ignore */
+    .marketing .col-lg-4 p {
+      margin-right: 0.75rem;
+      margin-left: 0.75rem;
+    }
+    /* rtl:end:ignore */
 
-<!-- Navbar (sit on top) -->
-<div class="w3-top">
-  <div class="w3-bar" id="myNavbar">
-    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
-      <i class="fa fa-bars"></i>
-    </a>
-    <a href="#home" class="w3-bar-item w3-button">HOME</a>
-    <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ÜBER UNS</a>
-    <a href="#portfolio" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> UNSERE ARBEIT</a>
-    <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> KONTAKT</a>
-      
-    </a>
-  </div>
+    /* Featurettes
+  ------------------------- */
 
-  <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-    <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ÜBER UNS</a>
-    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">UNSERE ARBEIT</a>
-    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">KONTAKT</a>
-  </div>
-</div>
+    .featurette-divider {
+      margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+    }
 
-<!-- First Parallax Image with Logo Text -->
-<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
-  <div class="w3-display-middle" style="white-space:nowrap;">
-    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity"><span class="w3-hide-small"></span>Müllfrei Dieburg</span>
-  </div>
-</div>
+    /* Thin out the marketing headings */
+    .featurette-heading {
+      font-weight: 300;
+      line-height: 1;
+      /* rtl:remove */
+      letter-spacing: -0.05rem;
+    }
 
-<!-- Container (About Section) -->
-<div class="w3-content w3-container w3-padding-64" id="about">
-  <h3 class="w3-center">ÜBER UNS</h3>
-  <p class="w3-center"><em>Wir lieben die Natur!</em></p>
-  <p>Wir der Müllfrei Dieburg e.V. sind eine Gruppe junger und engagierter Menschen, denen es nicht egal ist, was mit unserer Umwelt passiert. Mit unserer Vereinsarbeit konzentrieren wir uns besonders auf die Umwelt im Raum Darmstadt-Dieburg. In zahlreichen Situationen ist uns aufgefallen, dass in der Natur oft achtlos und falsch entsorgter Müll zu finden ist, seien es Autobatterien oder einfache Plastiktüten. Als einzelne Person konnten wir kaum etwas gegen dieses Problem unternehmen und haben uns deshalb zum Müllfrei Dieburg e.V. zusammengeschlossen, um gemeinsam und durch große Events wie etwa CleanUp2021 oder einfache Müllsammelaktionen gegen dieses Problem vorzugehen! Für die Natur! Für unsere Zukunft!</p>
-  <div class="w3-row">
-    <div class="w3-center w3-padding-large">
-      <p><b><i class="fa fa-user w3-margin-right"></i>Müllfrei Dieburg</b></p><br>
-      <img src="pictures/picture_4.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="500" height="333">
-    </div>
+    /* RESPONSIVE CSS
+  -------------------------------------------------- */
 
-    <!-- Hide this text on small devices -->
-    <div class="w3-col m6 w3-hide-small w3-padding-large">
-      <p></p>
-    </div>
-  </div>
-  </div>
-</div>
+    @media (min-width: 40em) {
+      /* Bump up size of carousel content */
+      .carousel-caption p {
+        margin-bottom: 1.25rem;
+        font-size: 1.25rem;
+        line-height: 1.4;
+      }
 
-<div class="w3-row w3-center w3-dark-grey w3-padding-16">
+      .featurette-heading {
+        font-size: 50px;
+      }
+    }
 
-  <div class="w3-section w3-center">
-    <span class="w3-xlarge">2,3 kg</span><br>
-    Müll gesammelt
-  </div>
-  
+    @media (min-width: 62em) {
+      .featurette-heading {
+        margin-top: 7rem;
+      }
+    }
+  </style>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600&display=swap");
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Work Sans", sans-serif;
+    }
+    body,
+    html {
+      height: 100%;
+      color: #000;
+      line-height: 1.8;
+    }
 
-</div>
+    /* Create a Parallax Effect */
+    .bgimg-1,
+    .bgimg-2,
+    .bgimg-3 {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
 
-<!-- Second Parallax Image with Portfolio Text -->
-<div class="bgimg-2 w3-display-container w3-opacity-min">
-  <div class="w3-display-middle">
-    <span class="w3-xxlarge w3-text-white w3-wide">UNSERE ARBEIT</span>
-  </div>
-</div>
+    /* First image (Logo. Full height) */
+    .bgimg-1 {
+      background-image: url("pictures/picture_1.jpg");
+      min-height: 100%;
+    }
 
-<!-- Container (Portfolio Section) -->
-<div class="w3-content w3-container w3-padding-64" id="portfolio">
-  <h3 class="w3-center">Unsere Arbeit</h3>
-  <p class="w3-center"><em>Bilder unserer letzten großen Müllsammelaktionen!<br> Klickt die Bilder an um sie zu vergrößern!</em></p><br>
+    /* Second image (Portfolio) */
+    .bgimg-2 {
+      background-image: url("pictures/picture_2.jpg");
+      min-height: 400px;
+    }
 
-  <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
-  <div class="w3-row-padding w3-center">
-    <div class="w3-col m3">
-      <img src="pictures/sammelaktion_1.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Die ersten Fortschritte">
-    </div>
+    /* Third image (Contact) */
+    .bgimg-3 {
+      background-image: url("pictures/picture_3.jpg");
+      min-height: 400px;
+    }
 
-    <div class="w3-col m3">
-      <img src="pictures/ersatz_2.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Mitarbeiter Nr.1">
-    </div>
+    .w3-wide {
+      letter-spacing: 10px;
+    }
+    .w3-hover-opacity {
+      cursor: pointer;
+    }
 
-    <div class="w3-col m3">
-      <img src="pictures/ersatz_3.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Mitarbeiter Nr.1">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="pictures/ersatz_4.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Mitarbeiter Nr.1">
-    </div>
-  </div>
-
-  <div class="w3-row-padding w3-center w3-section">
-    <div class="w3-col m3">
-      <img src="pictures/ersatz_5.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Mitarbeiter Nr.1">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="pictures/ersatz_6.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Mitarbeiter Nr.1">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="pictures/ersatz_7.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Mitarbeiter Nr.1">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="pictures/ersatz_8.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Mitarbeiter Nr.1">
-    </div>
-    <button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">LOAD MORE</button>
-  </div>
-</div>
-
-<!-- Modal for full size images on click-->
-<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
-  <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
-  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-    <img id="img01" class="w3-image">
-    <p id="caption" class="w3-opacity w3-large"></p>
-  </div>
-</div>
-
-<!-- Third Parallax Image with Portfolio Text -->
-<div class="bgimg-3 w3-display-container w3-opacity-min">
-  <div class="w3-display-middle">
-     <span class="w3-xxlarge w3-text-white w3-wide">KONTAKT</span>
-  </div>
-</div>
-
-<!-- Container (Contact Section) -->
-<div class="w3-content w3-container w3-padding-64" id="contact">
-  <h3 class="w3-center">Wo wir Müll sammeln</h3>
-  <p class="w3-center"><em>Wir freuen uns über Feedback!</em></p>
-
-  <div class="w3-row w3-padding-32 w3-section">
-    <div class="w3-col m4 w3-container">
-      <img src="pictures/picture_5.jpg" class="w3-image w3-round" style="width:100%">
-    </div>
-    <div class="w3-col m8 w3-panel">
-      <div class="w3-large w3-margin-bottom">
-        <a href="https://www.google.de/maps/place/64807+Dieburg/" target="_blank"><i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i></a> 64807,  Dieburg<br>
-        <a href="tel: 060711617"><i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i></a> 06071 7480116<br>
-        <a href="mailto: kontakt@muellfrei-dieburg.de"><i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i></a> kontakt@muellfrei-dieburg.de<br>
-      </div>
-      <p>Oder hinterlasst uns eine Nachricht! Wir freuen uns auf Euch!</p>
-      <form action="/action_page.php" target="_blank">
-        <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
-          <div class="w3-half">
-            <input class="w3-input w3-border" type="text" id="m-name" placeholder="Name" required name="Name">
-          </div>
-          <div class="w3-half">
-            <input class="w3-input w3-border" type="text" id="m-email" placeholder="Email" required name="Email">
+    /* Turn off parallax scrolling for tablets and phones */
+    @media only screen and (max-device-width: 1600px) {
+      .bgimg-1,
+      .bgimg-2,
+      .bgimg-3 {
+        background-attachment: scroll;
+        min-height: 400px;
+      }
+    }
+  </style>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand fw-bold" href="#">Müllfrei Dieburg</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#über">Über Uns</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#arbeit">Unsere Arbeit</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#kontakt">Kontakt</a>
+              </li>
+            </ul>
           </div>
         </div>
-        <input class="w3-input w3-border" type="text" id="m-message" placeholder="Message" required name="Message">
-        <a class="w3-button w3-black w3-right w3-section" onclick="sendMail()">
-          <i class="fa fa-paper-plane"></i> SEND MESSAGE
-        </a>
-      </form>
+      </nav>
+    </header>
+
+    <!-- First Parallax Image with Logo Text -->
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active" style="background-image: url(pictures/picture_1.jpg); background-size: cover; background-repeat: no-repeat;">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1 class="w3-text-black">Müllfrei Dieburg</h1>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" style="background-image: url(pictures/MuellfreiDieburg_Banner_large.jpg); background-size: cover; background-repeat: no-repeat; background-position: center center;">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Unser erster Bericht</h1>
+              <a class="text-light" target="_blank" href="https://dokumente.muellfrei-dieburg.de/md-report-1.pdf">Anschauen</a>
+              <!-- <p>Some representative placeholder content for the second slide of the carousel.</p> -->
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" style="background-image: url(pictures/sammelaktion_1.jpg); background-size: cover; background-repeat: no-repeat; background-position: center center;">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Die erste Sammelaktion.</h1>
+              <!-- <p>Some representative placeholder content for the third slide of this carousel.</p> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-  </div>
-</div>
 
-<!-- Footer -->
-<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
-  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
-  <div class="w3-xlarge w3-section">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
-  </div>
-  <p><a href="/impressum/index.html">Impressum</a> | <a href="https://dokumente.muellfrei-dieburg.de">Dokumente</a></p>
-  <p id="disclaimer-text">Copyright &copy; Müllfrei Dieburg e.V. Alle Rechte vorbehalten.</p>
-</footer>
- 
-<script>
-// Modal Image Gallery
-function onClick(element) {
-  document.getElementById("img01").src = element.src;
-  document.getElementById("modal01").style.display = "block";
-  var captionText = document.getElementById("caption");
-  captionText.innerHTML = element.alt;
-}
+    <!-- Container (About Section) -->
+    <div class="w3-content w3-container w3-padding-64" id="über">
+      <h3 class="w3-center">ÜBER UNS</h3>
+      <p class="w3-center"><em>Wir lieben die Natur!</em></p>
+      <p>
+        Wir der Müllfrei Dieburg e.V. sind eine Gruppe junger und engagierter Menschen, denen es nicht egal ist, was mit unserer Umwelt passiert. Mit unserer Vereinsarbeit konzentrieren wir uns besonders auf die Umwelt im Raum
+        Darmstadt-Dieburg. In zahlreichen Situationen ist uns aufgefallen, dass in der Natur oft achtlos und falsch entsorgter Müll zu finden ist, seien es Autobatterien oder einfache Plastiktüten. Als einzelne Person konnten wir kaum etwas
+        gegen dieses Problem unternehmen und haben uns deshalb zum Müllfrei Dieburg e.V. zusammengeschlossen, um gemeinsam und durch große Events wie etwa CleanUp2021 oder einfache Müllsammelaktionen gegen dieses Problem vorzugehen! Für die
+        Natur! Für unsere Zukunft!
+      </p>
+      <div class="w3-row">
+        <div class="w3-center w3-padding-large">
+          <p>
+            <b><i class="fa fa-user w3-margin-right"></i>Müllfrei Dieburg</b>
+          </p>
+          <br />
+          <img src="pictures/picture_4.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="500" height="333" />
+        </div>
 
-// Change style of navbar on scroll
-window.onscroll = function() {myFunction()};
-function myFunction() {
-    var navbar = document.getElementById("myNavbar");
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
-    } else {
-        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
-    }
-}
+        <!-- Hide this text on small devices -->
+        <div class="w3-col m6 w3-hide-small w3-padding-large"></div>
+      </div>
+    </div>
 
-// Used to toggle the menu on small screens when clicking on the menu button
-function toggleFunction() {
-    var x = document.getElementById("navDemo");
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-    } else {
-        x.className = x.className.replace(" w3-show", "");
-    }
-}
-</script>
+    <div class="w3-row w3-center w3-dark-grey w3-padding-16">
+      <div class="w3-section w3-center">
+        <span class="w3-xlarge">2,3 kg</span><br />
+        Müll gesammelt
+      </div>
+    </div>
 
-<script>
-  function sendMail() {
-  
-    var name = document.getElementById('m-name').value;
-    var email = document.getElementById('m-email').value;
-    var message = document.getElementById('m-message').value;
+    <!-- Second Parallax Image with Portfolio Text -->
+    <div class="bgimg-2 w3-display-container w3-opacity-min">
+      <div class="w3-display-middle">
+        <span class="w3-xxlarge w3-text-white w3-wide">UNSERE ARBEIT</span>
+      </div>
+    </div>
 
-    
-  Email.send({
-    SecureToken : "0e2aa0ec-6a26-4216-bf68-9ef23b9c9976",
-    To : 'kontakt@muellfrei-dieburg.de',
-    From : "noreply@muellfrei-dieburg.de",
-    Subject : "[website] " + name + " hat auf der Webseite eine Nachricht hinterlassen",
-    Body : "Name: " + name + "; Email: " + email + "; Nachricht: " + message + "; (This email is auto-generated. Please do not answer to it.)"
-  }).then(
-  message => alert("Ihre Nachricht sollte jetzt unterwegs sein.")
-);
-  }
-</script>
+    <!-- Container (Portfolio Section) -->
+    <div class="w3-content w3-container w3-padding-64" id="arbeit">
+      <h3 class="w3-center">Unsere Arbeit</h3>
+      <p class="w3-center">
+        <em>
+          Bilder unserer letzten großen Müllsammelaktionen!<br />
+          Klickt die Bilder an um sie zu vergrößern!
+        </em>
+      </p>
+      <br />
 
-</body>
+      <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
+      <div class="w3-row-padding w3-center">
+        <div class="w3-col m3">
+          <img src="pictures/sammelaktion_1.jpg" style="width: 100%;" onclick="onClick(this)" class="w3-hover-opacity" alt="Die ersten Fortschritte" />
+        </div>
+
+        <div class="w3-col m3">
+          <img src="pictures/ersatz_2.jpg" style="width: 100%;" onclick="onClick(this)" class="w3-hover-opacity" alt="Mitarbeiter Nr.1" />
+        </div>
+
+        <div class="w3-col m3">
+          <img src="pictures/ersatz_3.jpg" style="width: 100%;" onclick="onClick(this)" class="w3-hover-opacity" alt="Mitarbeiter Nr.1" />
+        </div>
+
+        <div class="w3-col m3">
+          <img src="pictures/ersatz_4.jpg" style="width: 100%;" onclick="onClick(this)" class="w3-hover-opacity" alt="Mitarbeiter Nr.1" />
+        </div>
+      </div>
+
+      <div class="w3-row-padding w3-center w3-section">
+        <div class="w3-col m3">
+          <img src="pictures/ersatz_5.jpg" style="width: 100%;" onclick="onClick(this)" class="w3-hover-opacity" alt="Mitarbeiter Nr.1" />
+        </div>
+
+        <div class="w3-col m3">
+          <img src="pictures/ersatz_6.jpg" style="width: 100%;" onclick="onClick(this)" class="w3-hover-opacity" alt="Mitarbeiter Nr.1" />
+        </div>
+
+        <div class="w3-col m3">
+          <img src="pictures/ersatz_7.jpg" style="width: 100%;" onclick="onClick(this)" class="w3-hover-opacity" alt="Mitarbeiter Nr.1" />
+        </div>
+
+        <div class="w3-col m3">
+          <img src="pictures/ersatz_8.jpg" style="width: 100%;" onclick="onClick(this)" class="w3-hover-opacity" alt="Mitarbeiter Nr.1" />
+        </div>
+        <button class="w3-button w3-padding-large w3-light-grey" style="margin-top: 64px;">LOAD MORE</button>
+      </div>
+    </div>
+
+    <!-- Modal for full size images on click-->
+    <div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+      <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
+      <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+        <img id="img01" class="w3-image" />
+        <p id="caption" class="w3-opacity w3-large"></p>
+      </div>
+    </div>
+
+    <!-- Third Parallax Image with Portfolio Text -->
+    <div class="bgimg-3 w3-display-container w3-opacity-min">
+      <div class="w3-display-middle">
+        <span class="w3-xxlarge w3-text-white w3-wide">KONTAKT</span>
+      </div>
+    </div>
+
+    <!-- Container (Contact Section) -->
+    <div class="w3-content w3-container w3-padding-64" id="kontakt">
+      <h3 class="w3-center">Wo wir Müll sammeln</h3>
+      <p class="w3-center"><em>Wir freuen uns über Feedback!</em></p>
+
+      <div class="w3-row w3-padding-32 w3-section">
+        <div class="w3-col m4 w3-container">
+          <img src="pictures/picture_5.jpg" class="w3-image w3-round" style="width: 100%;" />
+        </div>
+        <div class="w3-col m8 w3-panel">
+          <div class="w3-large w3-margin-bottom">
+            <a href="https://www.google.de/maps/place/64807+Dieburg/" target="_blank"><i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i></a> 64807, Dieburg<br />
+            <a href="tel: 060711617"><i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i></a> 06071 7480116<br />
+            <a href="mailto: kontakt@muellfrei-dieburg.de"><i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i></a> kontakt@muellfrei-dieburg.de<br />
+          </div>
+          <p>Oder hinterlasst uns eine Nachricht! Wir freuen uns auf Euch!</p>
+          <form action="/action_page.php" target="_blank">
+            <div class="w3-row-padding" style="margin: 0 -16px 8px -16px;">
+              <div class="w3-half">
+                <input class="w3-input w3-border" type="text" id="m-name" placeholder="Name" required name="Name" />
+              </div>
+              <div class="w3-half">
+                <input class="w3-input w3-border" type="text" id="m-email" placeholder="Email" required name="Email" />
+              </div>
+            </div>
+            <input class="w3-input w3-border" type="text" id="m-message" placeholder="Message" required name="Message" />
+            <a class="w3-button w3-black w3-right w3-section" onclick="sendMail()"> <i class="fa fa-paper-plane"></i> SEND MESSAGE </a>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
+      <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+      <p><a href="/impressum/index.html">Impressum</a> | <a href="https://dokumente.muellfrei-dieburg.de">Dokumente</a></p>
+      <p id="disclaimer-text">Copyright &copy; Müllfrei Dieburg e.V. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <script>
+      // Modal Image Gallery
+      function onClick(element) {
+        document.getElementById("img01").src = element.src;
+        document.getElementById("modal01").style.display = "block";
+        var captionText = document.getElementById("caption");
+        captionText.innerHTML = element.alt;
+      }
+
+      // Change style of navbar on scroll
+      window.onscroll = function () {
+        myFunction();
+      };
+      function myFunction() {
+        var navbar = document.getElementById("myNavbar");
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+          navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+        } else {
+          navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+        }
+      }
+
+      // Used to toggle the menu on small screens when clicking on the menu button
+      function toggleFunction() {
+        var x = document.getElementById("navDemo");
+        if (x.className.indexOf("w3-show") == -1) {
+          x.className += " w3-show";
+        } else {
+          x.className = x.className.replace(" w3-show", "");
+        }
+      }
+    </script>
+
+    <script>
+      function sendMail() {
+        var name = document.getElementById("m-name").value;
+        var email = document.getElementById("m-email").value;
+        var message = document.getElementById("m-message").value;
+
+        Email.send({
+          SecureToken: "0e2aa0ec-6a26-4216-bf68-9ef23b9c9976",
+          To: "kontakt@muellfrei-dieburg.de",
+          From: "noreply@muellfrei-dieburg.de",
+          Subject: "[website] " + name + " hat auf der Webseite eine Nachricht hinterlassen",
+          Body: "Name: " + name + "; Email: " + email + "; Nachricht: " + message + "; (This email is auto-generated. Please do not answer to it.)",
+        }).then((message) => alert("Ihre Nachricht sollte jetzt unterwegs sein."));
+      }
+    </script>
+  </body>
 </html>
